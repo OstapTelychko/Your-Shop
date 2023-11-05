@@ -1,0 +1,106 @@
+
+
+#button-wrapper{
+    position: relative;
+    height: 5vh;
+}
+
+#show-filters{
+    position: absolute;
+    right: 0;
+    padding: 1rem;
+    color: white;
+    font-size: clamp(12px, 1.5vmax, 30px);
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(45, 45, 45);
+    margin: 1rem;
+}
+
+#hide-filters{
+    position: relative;
+    background-color: rgb(170, 50, 50);
+    color: rgb(30, 30, 30);
+    border: none;
+    border-radius: 10px;
+    padding-inline: 0.8rem;
+    font-size: clamp(11px, 2vmax, 20px);
+    left: 95%;
+}
+
+#search-container{
+    display: flex;
+}
+
+aside{
+    position: absolute;
+    background-color: rgb(40,40,40);
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+
+    input{
+        background-color: rgb(45, 45, 45);
+        font-size: clamp(10px, 1.1vmax, 20px);
+        border: none;
+        border-radius: 7px;
+        color: white;
+        outline: none;
+        padding: 1rem;
+        width: -webkit-fill-available;
+    }
+
+    button{
+        padding: 0.5rem;
+        margin:10px auto;
+        font-size: clamp(12px, 1.3vmax, 30px);
+        color:white;
+        background-color: transparent;
+        border: none;
+        border-radius: 10px;
+        border-bottom: 2px solid transparent;
+        transition: border 0.3s;
+    }
+    button:hover{
+        border-bottom-color: rgb(124, 141, 27);
+    }
+    
+    h3{
+        font-size: clamp(12px, 1.3vmax, 25px);
+        color:white;
+    }
+    
+    ul{
+        list-style: none;
+        padding: 0;
+        a{  
+            display: block;
+            padding: 0.5rem;
+            color: white;
+            font-size: clamp(11px, 1.2vmax, 20px);
+        }
+    }
+
+    #clear-filters{
+        font-size: clamp(13px, 1.4vmax, 25px);
+        border-radius: 10px;
+        border-bottom: 2px solid transparent;
+        padding: 1rem;
+        color: white;
+        transition: border 0.3s;
+    }
+    #clear-filters:hover{
+        border-bottom-color: rgb(168, 62, 13);
+        transition: border 0.4s;
+    }
+}
+#items{
+    flex-grow:  1;
+}

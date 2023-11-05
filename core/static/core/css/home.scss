@@ -1,0 +1,40 @@
+
+
+main{
+    div{
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: rgb(45,45,45);
+        border-radius: 7px;
+
+        h2{
+            margin-bottom: 3rem;
+            font-size: clamp(14px, 1.4vmax, 20px);
+            text-align: center;
+            color: whitesmoke;
+        }
+    }
+
+    #categories{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        div{
+            background-color: rgb(50,50,50);
+            border-radius: 10px;
+        }
+
+        h4{
+            font-size: clamp(15px, 1.5vmax, 20px);
+            margin: 0;
+        }
+
+        h5{
+            font-size: clamp(12px, 1.1vmax, 20px);
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+    }
+}

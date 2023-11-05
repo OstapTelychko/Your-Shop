@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/css/forms.css' %}">
+{% endblock css %}
+    
+
+{% block content %}
+    <main>
+        
+        <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>{{title}}</h1>
+
+            {% for field in form %}
+                <label>{{field.label}}</label>    
+                {{field}}
+            {% endfor %}
+
+            {% if form.errors or form.non_field_errors %}
+            <div id="errors">
+                
+                {% for field in form %}
+                    {{field.errors}}
+                {% endfor %}
+                
+                {{form.non_field_errors}}
+                </div>
+            {% endif %}
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+{% endblock content %}
+    
+    

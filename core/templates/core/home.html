@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/items.css' %}">
+{% endblock css %}
+    
+{% block title %}Your Shop{% endblock title %}
+
+
+{% block content %}
+    <main>
+        <div id="categories">
+            
+            {% for items_amount, category in categories %}
+                <div>
+                    <a href="{% url 'item:search' %}?category={{category.id}}">
+                        <h4>{{category.name}}</h4>
+                        <h5>{{items_amount}} items</h5>
+                    </a>
+                </div>
+                
+            {% endfor %}
+                
+        </div>
+        <div>
+            <h2>Newest Items</h2>
+        </div>
+        <div id="items">
+            
+            {% for item in items %}
+                <div class="item">
+                    <a href="{% url 'item:details' item.id %}">
+                        <div class="image">
+                            
+                            {% if item.image != "" %}
+                                <img src="{{item.image.url}}" alt="">
+                            {% else %}
+                                <img>
+                            {% endif %}
+                                
+                        </div>
+
+                        <div class="price">
+                            <p>{{item.name}}</p>
+                            <p>Price {{item.price}}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+                
+        </div>
+    </main>
+{% endblock content %}
+    

@@ -1,0 +1,101 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    Items
+{% endblock title %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'item/css/search.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/items.css' %}">
+{% endblock css %}
+    
+
+{% block js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const show_filters = document.querySelector("#show-filters")
+            const hide_filters = document.querySelector("#hide-filters")
+            const filters_window = document.querySelector("aside")
+            filters_window.style.display = "none"
+            
+            show_filters.addEventListener('click', function(){
+                filters_window.style.display = "block"
+            })
+
+            hide_filters.addEventListener('click', function(){
+                filters_window.style.display = "none"
+            })
+        })
+    </script>
+{% endblock js %}
+    
+
+{% block content %}
+    <main>
+        <div id="button-wrapper">
+            <button id="show-filters">Filters</button>
+        </div>
+        <div id="search-container">
+
+            <aside>
+                <button id="hide-filters">X</button>
+                <form action="." method="get">
+                    <input name="query" type="text" value="{{query}}" placeholder="Enter item name">
+                    <button type="submit">Search</button>
+                </form>
+    
+                <hr>
+    
+                <h3>Categories</h3>
+                <ul>
+                    
+                    {% for category in categories %}
+                        
+                        {% if category.id == category_id %}    
+                            <li style="background-color: rgb(45,45,45); border-radius: 10px;"><a href="{% url 'item:search'%}?query={{query}}&category={{category.id}} ">{{category.name}}</a></li>
+                        {% else %}
+                            <li><a href="{% url 'item:search'%}?query={{query}}&category={{category.id}} ">{{category.name}}</a></li>
+                        {% endif %}
+                            
+                    {% endfor %}
+                        
+                </ul>
+    
+                <hr>
+    
+                <h3>Clear filters</h3>
+                <a href="{% url 'item:search' %}" id="clear-filters">Clear</a>
+            </aside>
+    
+            <div id="items">
+                    
+                {% for item in items %}
+                    <div class="item">
+                        <a href="{% url 'item:details' item.id %}">
+                            <div class="image">
+                                
+                                {% if item.image != "" %}
+                                    <img src="{{item.image.url}}" alt="">
+                                {% else %}
+                                    <img>
+                                {% endif %}
+                                    
+                            </div>
+        
+                            <div class="price">
+                                <p>{{item.name}}</p>
+                                <p>Price {{item.price}}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+                    
+            </div>
+            
+        </div>
+    </main>
+{% endblock content %}
+    
+    

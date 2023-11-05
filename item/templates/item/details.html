@@ -1,0 +1,135 @@
+{% extends 'core/base.html' %}
+
+
+{% block title %}
+{{item.name}}
+{% endblock title %}
+
+{% load static %}
+
+{% block css %}
+    <!-- for rating -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'core/css/items.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'item/css/details.css' %}">
+{% endblock css %}
+
+
+{% block js %}
+    <script src="{% static 'item/js/details.js' %}"></script>
+{% endblock js %}
+    
+
+{% block content %}
+    <main>
+        <div id="image">
+            
+            {% if item.image != "" %}
+                <img src="{{item.image.url}}" alt="">
+            {% else %}
+                <img>
+            {% endif %} 
+        </div>
+        
+        <div id="details">
+            <h3 id="name">{{item.name}}</h3>
+            <h4 id="price">{{item.price}}</h4>
+            <p id="description">{{item.description}}</p>
+            <h4 id="seller">{{item.owner}}</h4>
+            
+            
+            {% if request.user == item.owner %}
+                <div id="item-management">
+                    <a href="{% url 'item:edit' item.id%}" id="edit-item">Edit Item</a>
+                    <a href="{% url 'item:remove' item.id%}" id="remove-item">Remove Item</a>
+                </div>
+            {% else %}
+                <a href="{% url 'conversation:new' item.id %}" id="contact-seller">Contact Seller</a>
+            {% endif %}
+                
+        </div>
+
+        
+        {% if item.owner != request.user %}
+            <div id="leave-feedback">
+                <form action="." method="post">
+                    {% csrf_token %}
+                    <h1>Leave a feedback</h1>
+                    <ul class="rating-list">
+                        <li id="first-star">
+                            <i class="fa fa-star 1" title="Rate 1"></i></li>
+                        <li id="second-star">
+                            <i class="fa fa-star 2" title="Rate 2"></i></li>
+                        <li id="third-star">
+                            <i class="fa fa-star 3" title="Rate 3"></i></li>
+                        <li id="fourth-star">
+                            <i class="fa fa-star 4" title="Rate 4"></i></li>
+                        <li id="fifth-star">
+                            <i class="fa fa-star 5" title="Rate 5"></i></li>
+                    </ul>
+                    {% for field in form %}
+                        
+                        {% if field.label != "Rating" %}
+                        <label>{{field.label}}</label>    
+                        {% endif %}
+                        {{field}}
+                    {% endfor %}
+                    <button type="submit">Send</button>
+                </form>
+            </div>            
+        {% endif %}
+            
+
+        <div id="feedbacks">
+            
+            {% for feedback in feedbacks %}
+            <div class="feedback">
+                    <div class="owner">{{feedback.owner.username}} |  {{feedback.created}}</div>
+                    <ul class="rating-list">
+                        <li><i class="fa fa-star {% if feedback.rating > 0 %} checked {% endif %}" title="Rate 1"></i></li>
+                        <li><i class="fa fa-star {% if feedback.rating > 1 %} checked {% endif %}" title="Rate 2"></i></li>
+                        <li><i class="fa fa-star {% if feedback.rating > 2 %} checked {% endif %}" title="Rate 3"></i></li>
+                        <li><i class="fa fa-star {% if feedback.rating > 3 %} checked {% endif %}" title="Rate 4"></i></li>
+                        <li><i class="fa fa-star {% if feedback.rating > 4 %} checked {% endif %}" title="Rate 5"></i></li>
+                    </ul>
+                    <p class="comment">{{feedback.content}}</p>
+                </div>
+            {% endfor %}
+                
+        </div>
+
+        <div id="related-items-title">
+            <h2>Related Items</h2>
+        </div>
+
+        <div id="items">
+            
+            {% for item in related_items %}
+                <div class="item">
+                    <a href="{% url 'item:details' item.id %}">
+                        <div class="image">
+                            
+                            {% if item.image != "" %}
+                                <img src="{{item.image.url}}" alt="">
+                            {% else %}
+                                <img>
+                            {% endif %}
+                                
+                        </div>
+
+                        <div class="price">
+                            <p>{{item.name}}</p>
+                            <p>Price {{item.price}}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+                
+        </div>
+        
+    </main>
+{% endblock content %}
+    
+    

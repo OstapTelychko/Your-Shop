@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    New conversation
+{% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'core/css/forms.css' %}">
+{% endblock css %}
+    
+
+{% block content %}
+    <main>
+        
+        <form action="#" method="post">
+            <h1>New conversation</h1>
+            {% csrf_token %}
+    
+            {% for field in form %}
+                <label>{{field.label}}</label>    
+                {{field}}
+            {% endfor %}
+    
+            {% if form.errors or form.non_field_errors %}
+            <div id="errors">
+                
+                {% for field in form %}
+                    {{field.errors}}
+                {% endfor %}
+                
+                {{form.non_field_errors}}
+                </div>
+            {% endif %}
+            <button type="submit">Send</button>
+        </form>
+    </main>
+{% endblock content %}
+    
+    

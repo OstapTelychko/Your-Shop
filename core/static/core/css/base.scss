@@ -1,0 +1,130 @@
+$buttons_after : border-color 1s, color 0.4s;
+$buttons_before : border-color 0.3s, color 0.3s;
+
+body{
+    background-color: rgb(35,35,35);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-x: hidden;
+      
+}
+
+h1{
+    color: rgb(200,200,200);
+}
+
+a{
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    border-color: gray;
+    padding: 1.5vmax;
+    border-bottom:1px solid white;
+    align-items: center;
+    
+    a{  
+        border-bottom: 1px solid transparent;
+        padding: 0.5rem;
+        font-size: clamp(12px,1.3vmax,20px);
+        color: rgb(170, 170, 170);
+        border-radius: 10px;
+        transition: $buttons_before;
+    }
+    a:hover{
+        color: white;
+        border-bottom-color:white;
+        transition: $buttons_after;
+    }
+    
+
+    #nav-items{
+        display: flex;
+        align-items: center;
+        margin-left: 1.4vmax;
+        margin-right: 2rem;
+        a{
+            margin-right: 1vmax;
+            border-radius: 1rem;
+        }
+    }
+
+    #sign-up:hover{
+        border-bottom-color:rgb(65,175,25);
+    }
+
+    #login:hover{
+        border-bottom-color:rgb(125,125,125);
+    }
+
+    #logout{
+        color: rgb(170,100,100);
+    }
+    
+    #logout:hover{
+        color: rgb(255,100,100);
+        border-bottom-color:rgb(255, 100, 100) ;
+    }
+
+    #inbox:hover{
+        border-bottom-color:rgb(98,160,160);
+    }
+
+    #dashboard:hover{
+        border-bottom-color: rgb(165,145,55);
+    }
+    
+}
+
+footer{
+    border-top: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5vmax;
+    background-color:rgb(50,50,50);
+    flex: 1;
+
+    #About{
+        width: 55%;
+        color:white;
+
+        h3{
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    #Menu{
+        width: 45%;
+
+        h3{
+            margin-bottom: 1.25rem;
+            color:white;
+        }
+
+        ul{
+            margin-top: 0.5rem;
+            list-style:none;
+            padding: 0;
+            li{
+
+                a{
+                    font-size: 110%;
+                    transition: color 0.2s;
+                }
+                a:hover{
+                    color:white;
+                    transition: color 0.4s;
+                }
+            }
+        }
+    }
+}
+
+
+

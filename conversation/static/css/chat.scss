@@ -1,0 +1,56 @@
+main{
+    .messages{
+        margin: 1rem;
+
+    }
+    .message{
+        background-color: rgb(45, 45, 45);
+        padding: 1rem;
+        margin: 0.5rem;
+        border-radius: 10px;
+        color: white;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        align-items: center;
+
+        label{
+            display: none;
+        }
+        textarea{
+            background-color: rgb(40, 40, 40);
+            box-sizing: border-box;
+            border: none;
+            border-radius: 7px;
+            color: white;
+            outline: none;
+            padding: 1rem;
+            width: 90vw;
+            height: clamp(100px, 10vh, 200px);
+        }
+        textarea::-webkit-scrollbar{
+            display: none;
+        }
+
+       button{
+            width: clamp(200px, 30vw, 700px);
+            margin-top: 1rem;
+            background-color: rgb(40,40,40);
+            color: rgb(150,150,150);
+            border-radius: 10px;
+            outline: none;
+            border: 1px solid rgb(150,150,150);
+            padding: 1rem;
+            font-size: clamp(13px,1.3vmax,35px);
+            transition: border-color 0.4s, color 0.4s;
+        }
+        button:hover{
+            border-color: white;
+            color:white;
+            transition: border-color 0.4s, color 0.4s;
+        }
+    }
+}

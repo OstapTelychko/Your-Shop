@@ -1,0 +1,48 @@
+main{
+    #conversations{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 10px;
+    }
+    .conversation{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1.5rem;
+        background-color: rgb(45, 45, 45);
+        border-radius: 10px;
+
+    }
+
+    .image{
+        display: flex;
+        justify-content: center;
+        background: none;
+        width: clamp(200px, 15vmax, 400px);
+        height: clamp(50px, 7vmax, 250px);
+
+        img{
+            object-fit: fill;
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 7px;
+        }
+        img:not([src]){
+            visibility: hidden;
+        }
+        
+    }
+
+    .owner{
+        font-size: clamp(11px, 1.1vmax, 20px);
+    }
+
+    .subject{
+        font-size: clamp(11px, 1.1vmax, 20px);
+        overflow: hidden;
+        max-width: clamp(30ch, 40vw, 85ch);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}   

@@ -1,0 +1,105 @@
+body {
+  background-color: rgb(35, 35, 35);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+h1 {
+  color: rgb(200, 200, 200);
+}
+
+a {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  border-color: gray;
+  padding: 1.5vmax;
+  border-bottom: 1px solid white;
+  align-items: center;
+}
+nav a {
+  border-bottom: 1px solid transparent;
+  padding: 0.5rem;
+  font-size: clamp(12px, 1.3vmax, 20px);
+  color: rgb(170, 170, 170);
+  border-radius: 10px;
+  transition: border-color 0.3s, color 0.3s;
+}
+nav a:hover {
+  color: white;
+  border-bottom-color: white;
+  transition: border-color 1s, color 0.4s;
+}
+nav #nav-items {
+  display: flex;
+  align-items: center;
+  margin-left: 1.4vmax;
+  margin-right: 2rem;
+}
+nav #nav-items a {
+  margin-right: 1vmax;
+  border-radius: 1rem;
+}
+nav #sign-up:hover {
+  border-bottom-color: rgb(65, 175, 25);
+}
+nav #login:hover {
+  border-bottom-color: rgb(125, 125, 125);
+}
+nav #logout {
+  color: rgb(170, 100, 100);
+}
+nav #logout:hover {
+  color: rgb(255, 100, 100);
+  border-bottom-color: rgb(255, 100, 100);
+}
+nav #inbox:hover {
+  border-bottom-color: rgb(98, 160, 160);
+}
+nav #dashboard:hover {
+  border-bottom-color: rgb(165, 145, 55);
+}
+
+footer {
+  border-top: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5vmax;
+  background-color: rgb(50, 50, 50);
+  flex: 1;
+}
+footer #About {
+  width: 55%;
+  color: white;
+}
+footer #About h3 {
+  margin-bottom: 1.25rem;
+}
+footer #Menu {
+  width: 45%;
+}
+footer #Menu h3 {
+  margin-bottom: 1.25rem;
+  color: white;
+}
+footer #Menu ul {
+  margin-top: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+footer #Menu ul li a {
+  font-size: 110%;
+  transition: color 0.2s;
+}
+footer #Menu ul li a:hover {
+  color: white;
+  transition: color 0.4s;
+}/*# sourceMappingURL=base.css.map */

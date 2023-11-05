@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Inbox
+{% endblock title %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/inbox.css' %}">
+{% endblock css %}
+    
+
+{% block content %}
+    <main>
+        <h1>Inbox</h1>
+
+        <div id="conversations">
+            
+            {% for conversation in conversations %}
+                <a href="{% url 'conversation:chat' conversation.id%}">
+                    <div class="conversation">
+                        <div class="image">
+                            
+                            {% if conversation.item.image != "" %}
+                                <img src="{{conversation.item.image.url}}" >
+                            {% else %}
+                                <img>
+                            {% endif %}
+                                
+                        </div>
+                        <div>
+                            <p class="owner"><strong>{{conversation.item.owner.username}}</strong> | {{conversation.modified}}</p>
+                            <p class="subject">{{conversation.item.name}}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+                
+        </div>
+    </main>
+{% endblock content %}
+    
+    

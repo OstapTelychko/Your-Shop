@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Inbox
+{% endblock title %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'core/css/forms.css' %}"> -->
+{% endblock css %}
+    
+
+{% block content %}
+    <main>
+        <h1></h1>
+
+        <div id="messages">
+            
+            {% for message in conversation.messages.all %}
+                
+                {% if request.user == message.owner %}
+                    <div class="message" style="background-color: rgb(69, 69, 124);">
+                        <p class="owner"><strong>{{message.owner.username}}</strong> @ {{message.created}}</p>
+                        <p class="content">{{message.content}}</p>
+                    </div>
+                {% else %}
+                    <div class="message">
+                        <p class="owner"><strong>{{message.owner.username}}</strong> @ {{message.created}}</p>
+                        <p class="content">{{message.content}}</p>
+                    </div>
+                {% endif %}
+                    
+            {% endfor %}
+                
+        </div>
+
+        <form action="." method="post">
+            {% csrf_token %}
+            
+            {{form.as_p}}
+
+            <button type="submit">Send</button>
+        </form>
+    </main>
+{% endblock content %}
+    
+    
