@@ -128,6 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (f"{BASE_DIR}/core/static/", f"{BASE_DIR}/item/static/", f"{BASE_DIR}/conversation/static/")
+#STATIC_ROOT
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR/"media"

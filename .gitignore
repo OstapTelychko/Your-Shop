@@ -2,3 +2,5 @@
 /config.py
 /requirements.txt
 /test.py
+/db.sqlite3
+media/items_images
