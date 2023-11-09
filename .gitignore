@@ -4,3 +4,5 @@
 /test.py
 /database.sqlite3
 media/items_images
+your_shop/__pycache__/settings.cpython-311.pyc
+your_shop/__pycache__/urls.cpython-311.pyc
