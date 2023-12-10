@@ -36,24 +36,30 @@ def search(request:HttpRequest):
 def details(request:HttpRequest, id:int):
     item = get_object_or_404(Items, id=id)
 
-    if request.method == "POST":
+    if request.method == "POST":#User sent feedback
+
         if request.user.is_authenticated:
             form = AddFeedBackForm(request.POST)
 
-            if form.is_valid():
-                feedback = form.save(commit=False)
-                feedback.owner = request.user
-                feedback.item = item
-                feedback.save()
+            if int(form["rating"].value()) in (1, 2, 3, 4, 5):#If somebody changed input value
+                if form.is_valid():
+                    print(form["rating"].value() == "")
+                    feedback = form.save(commit=False)
+                    feedback.owner = request.user
+                    feedback.item = item
+                    feedback.save()
 
-                return redirect("item:details", id=item.id)
+                    return redirect("item:details", id=item.id)
         else:
-            path_back_to_item = reverse("item:details",args=(item.id,))
+            path_back_to_item = reverse("item:details", args=(item.id,))
             path = f"{reverse('core:signup')}?next={path_back_to_item}"
             return redirect(path)
-    else: 
+        
+    else:
+
         feedbacks = FeedBacks.objects.filter(item = item)
-        form = AddFeedBackForm()
+        form = AddFeedBackForm(initial={"rating":1})
+
         if request.user == item.owner:
             related_items = Items.objects.filter(category=item.category, sold = False).exclude(id=id)[:3]
 

@@ -47,7 +47,7 @@ class FeedBacks(models.Model):
     content = models.TextField()
     item = models.ForeignKey(Items, related_name="feedbacks", on_delete=models.CASCADE)
     owner = models.ForeignKey(User, related_name="feedbacks", on_delete=models.CASCADE)
-    rating = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:

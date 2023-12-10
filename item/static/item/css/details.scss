@@ -133,6 +133,13 @@ main{
     }
     
     #leave-feedback{
+        width: 100%;
+        
+        button{
+            width: 50%;
+            align-self: center;
+        }
+        
         .hover-star{
             color: rgb(211, 116, 1);
         }

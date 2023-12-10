@@ -117,6 +117,13 @@ main .rating-list li {
 main .rating-list .checked {
   color: orange;
 }
+main #leave-feedback {
+  width: 100%;
+}
+main #leave-feedback button {
+  width: 50%;
+  align-self: center;
+}
 main #leave-feedback .hover-star {
   color: rgb(211, 116, 1);
 }

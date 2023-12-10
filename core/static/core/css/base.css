@@ -26,7 +26,7 @@ nav {
 }
 nav a {
   border-bottom: 1px solid transparent;
-  padding: 0.5rem;
+  padding: 0.3rem;
   font-size: clamp(12px, 1.3vmax, 20px);
   color: rgb(170, 170, 170);
   border-radius: 10px;

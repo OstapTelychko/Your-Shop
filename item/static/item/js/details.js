@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
+
     let first_star = document.querySelector("#first-star")
     let second_star = document.querySelector("#second-star")
     let third_star = document.querySelector("#third-star")
@@ -7,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let rating_stars = [first_star, second_star, third_star, fourth_star, fifth_star]
     let rate_input = document.querySelector("#id_rating")
+    // rate_input.value = 1
+
 
     rating_stars.forEach(star =>{
         star.addEventListener("click", function(){
@@ -42,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     rating_stars.forEach(star =>{
         star.addEventListener("mouseout", function(){
-            // let rating_value = rating_stars.indexOf(star)+1
 
             // return to default 
             for (let item of rating_stars){
@@ -50,12 +52,6 @@ document.addEventListener("DOMContentLoaded", function(){
                     item.classList.remove("hover-star")
                 }
             }
-            // // show selected stars
-            // for (let index of Array(rating_value).keys()){
-            //     rating_stars[index].style.color = "rgb(155, 65, 0)"
-            // }
-            
-            // rate_input.value = rating_value
         })
     })
 
